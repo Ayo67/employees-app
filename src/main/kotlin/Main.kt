@@ -1,5 +1,17 @@
 package ie.setu
-import kotlin.math.round
+import controllers.EmployeeAPI
+import models.Employee
+import mu.KotlinLogging
+
+val logger = KotlinLogging.logger {}
+
+fun main(args: Array<String>){
+    logger.info { "Launching Employee App" }
+    logger.info { "Launching Employee App" }
+    logger.info { "Launching Employee App" }
+    logger.info { "Launching Employee App" }
+    start()
+}
 
 var employees = EmployeeAPI()
 
@@ -35,9 +47,10 @@ fun start() {
 }
 fun list(){
     employees.findAll()
-        .forEach{
-            println(it)}
+        .forEach{ println(it.toString()) }
 }
+
+
 fun search() {
     val employee = getEmployeeById()
     if (employee == null)
@@ -60,9 +73,6 @@ fun dummyData() {
     employees.create(Employee("Joe", "Soap", 'm', 0, 35655.43, 31.0, 7.5, 2000.0, 25.6))
     employees.create(Employee("Joan", "Murphy", 'f', 0, 54255.13, 32.5, 7.0, 1500.0, 55.3))
     employees.create(Employee("Mary", "Quinn", 'f', 0, 75685.41, 40.0, 8.5, 4500.0, 0.0))
-}
-fun main(args: Array<String>){
-    start()
 }
 fun add(){
     print("Enter first name: ")
