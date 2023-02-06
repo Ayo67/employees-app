@@ -6,6 +6,7 @@ var employee =  Employee("Joe", "Soap", 'm', 6143, 67543.21, 38.5, 5.2, 1450.50,
 
 fun main(args: Array<String>){
 
+    add()
     var input : Int
 
     do {
@@ -39,6 +40,29 @@ fun menu() : Int {
          Enter Option : """)
     return readLine()!!.toInt()
 }
+fun add(){
+    print("Enter first name: ")
+    val firstName = readLine().toString()
+    print("Enter surname: ")
+    val surname = readLine().toString()
+    print("Enter gender (m/f): ")
+    val gender = readLine()!!.toCharArray()[0]
+    print("Enter employee ID: ")
+    val employeeID = readLine()!!.toInt()
+    print("Enter gross salary: ")
+    val grossSalary = readLine()!!.toDouble()
+    print("Enter PAYE %: ")
+    val payePercentage = readLine()!!.toDouble()
+    print("Enter PRSI %: ")
+    val prsiPercentage = readLine()!!.toDouble()
+    print("Enter Annual Bonus: ")
+    val annualBonus= readLine()!!.toDouble()
+    print("Enter Cycle to Work Deduction: ")
+    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+
+    employee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
+}
+
 
 fun getFullName() = when (employee.gender){
     'm', 'M' -> "Mr. ${employee.firstName} ${employee.surname}"
@@ -74,6 +98,8 @@ fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() 
         ______________________________________________________________________
              NET PAY: ${getNetMonthlyPay()} 
         ______________________________________________________________________"""
+
+
 
 
 
