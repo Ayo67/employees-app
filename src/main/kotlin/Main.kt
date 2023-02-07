@@ -22,6 +22,7 @@ fun menu() : Int {
          |   2. List All Employees
          |   3. Search Employees 
          |   4. Print Payslip for Employee
+         |   5. Delete an Employee
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -38,6 +39,7 @@ fun start() {
             2 -> list()
             3 -> search()
             4 -> paySlip()
+            5 -> delete()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -49,8 +51,6 @@ fun list(){
     employees.findAll()
         .forEach{ println(it.toString()) }
 }
-
-
 fun search() {
     val employee = getEmployeeById()
     if (employee == null)
@@ -58,6 +58,17 @@ fun search() {
     else
         println(employee)
 }
+
+fun delete(){
+    val employee = getEmployeeById()
+    if (employee != null) {
+        employees.delete(employee)
+        println("Employee with id ${employee.employeeID} was deleted")
+    } else {
+        println("No employee found with the given id")
+    }
+}
+
 internal fun getEmployeeById(): Employee? {
     print("Enter the employee id to search by: ")
     val employeeID = readLine()!!.toInt()
