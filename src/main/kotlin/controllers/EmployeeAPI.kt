@@ -2,6 +2,7 @@ package controllers
 
 import models.Employee
 
+
 var lastId = 0
 
 internal fun getId(): Int {
@@ -28,5 +29,11 @@ class EmployeeAPI {
     fun delete(employee: Employee) {
         employees.remove(employee)
     }
-}
+
+    fun update(employee: Employee, updatedEmployee: Employee) {
+
+        }
+    }
+
+
 

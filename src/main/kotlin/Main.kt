@@ -3,6 +3,7 @@ import controllers.EmployeeAPI
 import models.Employee
 import mu.KotlinLogging
 
+
 val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>){
@@ -23,6 +24,7 @@ fun menu() : Int {
          |   3. Search Employees 
          |   4. Print Payslip for Employee
          |   5. Delete an Employee
+         |   6. Update Employee details
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -40,6 +42,7 @@ fun start() {
             3 -> search()
             4 -> paySlip()
             5 -> delete()
+            6 -> update()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -107,6 +110,37 @@ fun add(){
 
     employees.create(Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction))
 }
+
+fun update() {
+    val employee = getEmployeeById()
+    if (employee != null) {
+        print("Enter first name: ")
+        val firstName = readLine().toString()
+        print("Enter surname: ")
+        val surname = readLine().toString()
+        print("Enter gender (m/f): ")
+        val gender = readLine()!!.toCharArray()[0]
+        print("Enter employee ID: ")
+        val employeeID = readLine()!!.toInt()
+        print("Enter gross salary: ")
+        val grossSalary = readLine()!!.toDouble()
+        print("Enter PAYE %: ")
+        val payePercentage = readLine()!!.toDouble()
+        print("Enter PRSI %: ")
+        val prsiPercentage = readLine()!!.toDouble()
+        print("Enter Annual Bonus: ")
+        val annualBonus= readLine()!!.toDouble()
+        print("Enter Cycle to Work Deduction: ")
+        val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+
+        val updatedEmployee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
+        employees.update(employee, updatedEmployee)
+        println("Employee with id ${employee.employeeID} was updated")
+    } else {
+        println("No employee found with the given id")
+    }
+}
+
 
 
 
