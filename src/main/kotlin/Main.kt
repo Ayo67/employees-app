@@ -25,6 +25,8 @@ fun menu() : Int {
          |   4. Print Payslip for Employee
          |   5. Delete an Employee
          |   6. Update Employee details
+         |   7. List all employees earning under a certain amount
+         |   8. Sort by gender
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -66,9 +68,9 @@ fun delete(){
     val employee = getEmployeeById()
     if (employee != null) {
         employees.delete(employee)
-        println("Employee with id ${employee.employeeID} was deleted")
+        println("Employee ID: ${employee.employeeID} was deleted")
     } else {
-        println("No employee found with the given id")
+        println("No employee was found with the selected id")
     }
 }
 
@@ -135,9 +137,9 @@ fun update() {
 
         val updatedEmployee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
         employees.update(employee, updatedEmployee)
-        println("Employee with id ${employee.employeeID} was updated")
+        println("Employee ID:${employee.employeeID} was updated")
     } else {
-        println("No employee found with the given id")
+        println("No employee was found with the selected ID")
     }
 }
 
