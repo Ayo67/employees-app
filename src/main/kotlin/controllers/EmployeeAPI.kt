@@ -1,5 +1,11 @@
+/*
+Created on : February 10, 2022
+Author     : Ayo Oguntuyi
+*/
+
 package controllers
 
+import ie.setu.employees
 import models.Employee
 
 
@@ -34,6 +40,9 @@ class EmployeeAPI {
 
         }
     }
+fun sortByGender() {
+
+}
 
 
 

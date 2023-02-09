@@ -1,3 +1,8 @@
+/*
+Created on : February 10, 2022
+Author     : Ayo Oguntuyi
+*/
+
 package ie.setu
 import controllers.EmployeeAPI
 import models.Employee
@@ -45,6 +50,7 @@ fun start() {
             4 -> paySlip()
             5 -> delete()
             6 -> update()
+            8 -> sortByGender()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -141,6 +147,11 @@ fun update() {
     } else {
         println("No employee was found with the selected ID")
     }
+}
+
+fun sortByGender() {
+    employees.findAll().sortedBy { it.gender }
+        .forEach { println(it.toString()) }
 }
 
 
