@@ -32,7 +32,7 @@ fun menu() : Int {
          |   6. Update Employee details
          |   7. List all employees earning under a certain amount
          |   8. Sort by gender
-         |  -1. Exit
+         |   0. Exit
          |       
          |Enter Option : """.trimMargin())
     return readLine()!!.toInt()
@@ -50,24 +50,30 @@ fun start() {
             4 -> paySlip()
             5 -> delete()
             6 -> update()
+            7 -> listEmployeesUnderAmount()
             8 -> sortByGender()
-            -99 -> dummyData()
-            -1 -> println("Exiting App")
+            0 -> println("Exiting App")
             else -> println("Invalid Option")
         }
         println()
     } while (input != -1)
 }
-fun list(){
-    employees.findAll()
-        .forEach{ println(it.toString()) }
+fun list() {
+        val employees = employees.findAll()
+        if (employees.isEmpty()) {
+            println("No employees found.")
+        } else {
+            employees.forEach { println(it.toString()) }
+        }
 }
+
 fun search() {
     val employee = getEmployeeById()
-    if (employee == null)
+    if (employee == null) {
         println("No employee found")
-    else
+    }else {
         println(employee)
+    }
 }
 
 fun delete(){
@@ -91,11 +97,7 @@ fun paySlip(){
     if (employee != null)
         println(employee.getPayslip())
 }
-fun dummyData() {
-    employees.create(Employee("Joe", "Soap", 'm', 0, 35655.43, 31.0, 7.5, 2000.0, 25.6))
-    employees.create(Employee("Joan", "Murphy", 'f', 0, 54255.13, 32.5, 7.0, 1500.0, 55.3))
-    employees.create(Employee("Mary", "Quinn", 'f', 0, 75685.41, 40.0, 8.5, 4500.0, 0.0))
-}
+
 fun add(){
     print("Enter first name: ")
     val firstName = readLine().toString()
@@ -153,6 +155,18 @@ fun sortByGender() {
     employees.findAll().sortedBy { it.gender }
         .forEach { println(it.toString()) }
 }
+
+fun listEmployeesUnderAmount() {
+    print("Enter the amount: ")
+    val amount = readLine()!!.toDouble()
+    val employeesUnderAmount = employees.findAll().filter { it.grossSalary < amount }
+    if (employeesUnderAmount.isNotEmpty()) {
+        employeesUnderAmount.forEach { println(it.toString()) }
+    } else {
+        println("No employees found earning under the entered amount.")
+    }
+}
+
 
 
 
