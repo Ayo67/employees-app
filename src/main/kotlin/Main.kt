@@ -5,13 +5,18 @@ Author     : Ayo Oguntuyi
 
 package ie.setu
 import controllers.EmployeeAPI
+import ie.setu.ConsoleColours.BLUE
+import ie.setu.ConsoleColours.RED
+import ie.setu.ConsoleColours.RESET
 import models.Employee
 import mu.KotlinLogging
 
 
 val logger = KotlinLogging.logger {}
-const val RED_COL = "\u001b[32m"
-const val RESET = "\u001b[0m"
+
+
+
+
 fun main(args: Array<String>){
     logger.info { "Launching Employee App" }
     logger.info { "Launching Employee App" }
@@ -22,9 +27,14 @@ fun main(args: Array<String>){
 
 var employees = EmployeeAPI()
 
+
+
+
+
 fun menu() : Int {
-    print(""" ${RED_COL}
+    print(""" ${RED}
          |Employee Menu ${RESET}
+         ${BLUE}
          |   1. Add Employee
          |   2. List All Employees
          |   3. Search Employees 
@@ -33,9 +43,9 @@ fun menu() : Int {
          |   6. Update Employee details
          |   7. List all employees earning under a certain amount
          |   8. Sort by gender
-         |   0. Exit
+         |   0. Exit 
          |       
-         |Enter Option : """.trimMargin())
+         |Enter Option :${RESET} """.trimMargin())
     return readLine()!!.toInt()
 }
 
