@@ -153,7 +153,21 @@ fun update() {
         println("No employee was found with the selected ID")
     }
 }
+fun sortByGender() {
+    val sortedListG = employees.sortByGender()
+    sortedListG.forEach { println(it.toString()) }
+}
 
+fun listEmployeesUnderAmount() {
+    print("Enter the amount: ")
+    val amount = readLine()!!.toDouble()
+    val employeesUnderAmount = employees.listEmployeesUnderAmount(amount)
+    if (employeesUnderAmount.isNotEmpty()) {
+        employeesUnderAmount.forEach { println(it.toString()) }
+    } else {
+        println("No employees found earning under the entered amount.")
+    }
+}
 
 
 
