@@ -10,7 +10,8 @@ import mu.KotlinLogging
 
 
 val logger = KotlinLogging.logger {}
-
+const val RED_COL = "\u001b[32m"
+const val RESET = "\u001b[0m"
 fun main(args: Array<String>){
     logger.info { "Launching Employee App" }
     logger.info { "Launching Employee App" }
@@ -22,8 +23,8 @@ fun main(args: Array<String>){
 var employees = EmployeeAPI()
 
 fun menu() : Int {
-    print(""" 
-         |Employee Menu
+    print(""" ${RED_COL}
+         |Employee Menu ${RESET}
          |   1. Add Employee
          |   2. List All Employees
          |   3. Search Employees 
@@ -99,6 +100,7 @@ fun paySlip(){
 }
 
 fun add(){
+
     print("Enter first name: ")
     val firstName = readLine().toString()
     print("Enter surname: ")
@@ -119,6 +121,7 @@ fun add(){
     val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
 
     employees.create(Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction))
+    logger.info { "Added New  Employee : ${employeeID}" }
 }
 
 fun update() {
@@ -151,21 +154,7 @@ fun update() {
     }
 }
 
-fun sortByGender() {
-    employees.findAll().sortedBy { it.gender }
-        .forEach { println(it.toString()) }
-}
 
-fun listEmployeesUnderAmount() {
-    print("Enter the amount: ")
-    val amount = readLine()!!.toDouble()
-    val employeesUnderAmount = employees.findAll().filter { it.grossSalary < amount }
-    if (employeesUnderAmount.isNotEmpty()) {
-        employeesUnderAmount.forEach { println(it.toString()) }
-    } else {
-        println("No employees found earning under the entered amount.")
-    }
-}
 
 
 

@@ -28,7 +28,7 @@ class EmployeeAPI {
     }
 
     fun create(employee: Employee) {
-        employee.employeeID = getId()
+        //employee.employeeID = getId()
         employees.add(employee)
     }
 
@@ -37,11 +37,28 @@ class EmployeeAPI {
     }
 
     fun update(employee: Employee, updatedEmployee: Employee) {
-
+        var em = findOne(employee.employeeID)
+        if (em != null) {
+            em.annualBonus = updatedEmployee.annualBonus
+            em.gender = updatedEmployee.gender
+            em.firstName = updatedEmployee.firstName
+            em.grossSalary = updatedEmployee.grossSalary
+            em.cycleToWorkMonthlyDeduction = updatedEmployee.cycleToWorkMonthlyDeduction
+            em.payePercentage = updatedEmployee.payePercentage
+            em.prsiPercentage = updatedEmployee.prsiPercentage
+            em.surname = updatedEmployee.surname
         }
-    }
-fun sortByGender() {
 
+    }
+
+    fun sortByGender(): List<Employee> {
+        return findAll().sortedBy { it.gender }
+
+    }
+
+    fun listEmployeesUnderAmount(amount: Double) : List<Employee> {
+return  findAll().filter { it.grossSalary < amount }
+    }
 }
 
 

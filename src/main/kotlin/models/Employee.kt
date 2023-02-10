@@ -35,7 +35,7 @@ class Employee(
     fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + cycleToWorkMonthlyDeduction))
     fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
-    /*fun getPayslip() =
+    fun getPayslip() =
         """
         ______________________________________________________________________
          Monthly Payslip:             ${getFullName()}, ID: ${employeeID}                 
@@ -52,8 +52,7 @@ class Employee(
                    Cycle To Work: ${cycleToWorkMonthlyDeduction}         
         ______________________________________________________________________
              NET PAY: ${getNetMonthlyPay()} 
-        ______________________________________________________________________"""*/
-
+        ______________________________________________________________________"""
 
 
 
