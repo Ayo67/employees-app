@@ -1,8 +1,26 @@
-# Employees-App-Calculator
-week 1 lab
+# Employees-App
+This project provides a simple employee management system for recording employee information and generating payslips.
 
-##  Project Description
+##  Features
+Add Employee: The system allows the user to add an employee to the database.
 
-## Project Purpose
+List All Employees: The system provides a functionality to list all the employees in the database.
+
+Search Employees: The system provides a functionality to search for a specific employee by their employee ID.
+
+Print Payslip for Employee: The system provides a functionality to print payslip for a specific employee by their employee ID.
+
+Delete an Employee: The system provides a functionality to delete an employee from the database by their employee ID.
+
+Update Employee details: The system provides a functionality to update the details of an employee.
+
+List all employees earning under a certain amount: The system provides a functionality to list all employees whose salary is under a certain amount.
+
+Sort by Gender: The system provides a functionality to sort the list of employees by gender.
+
+## Dependencies
+Kotlin Logging: The system uses Kotlin Logging for logging purposes.
+
 
 ## Project Author
+Ayo Oguntuyi
