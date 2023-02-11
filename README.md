@@ -27,8 +27,8 @@ Kotlin Logging: The system uses Kotlin Logging for logging purposes.
 Clone repo from Intellij
 Build within Intellij
 
-###
-
 
 ## Project Author
+Contributors names and contact info
+
 Ayo Oguntuyi @Ayo67
