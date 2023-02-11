@@ -24,13 +24,11 @@ val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>){
     logger.info { "Launching Employee App" }
+
     start()
 }
 
 var employees = EmployeeAPI()
-
-
-
 
 
 fun menu() : Int {
