@@ -113,8 +113,10 @@ fun delete(){
     if (employee != null) {
         employees.delete(employee)
         println("Employee ID: ${employee.employeeID} was deleted")
+        logger.info {"Employee ID: ${employee.employeeID} was deleted"}
     } else {
         println("No employee was found with the selected id")
+        logger.info {"No employee was found with the selected id"}
     }
 }
 
@@ -126,8 +128,11 @@ internal fun getEmployeeById(): Employee? {
 
 fun paySlip(){
     val employee = getEmployeeById()
-    if (employee != null)
+    if (employee != null) {
         println(employee.getPayslip())
+        logger.info { "Pay slip generated for employee ID: ${employee.employeeID}" }
+    }
+
 }
 
 fun add(){
@@ -183,11 +188,13 @@ fun update() {
         logger.info { "EmployeeID : ${employeeID}" }
     } else {
         println("No employee was found with the selected ID")
+        logger.info{"No employee was  found"}
     }
 }
 fun sortByGender() {
     val sortedListG = employees.sortByGender()
     sortedListG.forEach { println(it.toString()) }
+    logger.info{"Employees sorted by gender"}
 }
 
 fun listEmployeesUnderAmount() {
@@ -195,7 +202,9 @@ fun listEmployeesUnderAmount() {
     val amount = readLine()!!.toDouble()
     val employeesUnderAmount = employees.listEmployeesUnderAmount(amount)
     if (employeesUnderAmount.isNotEmpty()) {
-        employeesUnderAmount.forEach { println(it.toString()) }
+        employeesUnderAmount.forEach { println(it.toString())
+            logger.info("List of employees earning under the entered amount: $employeesUnderAmount")
+        }
     } else {
         println("No employees found earning under the entered amount.")
     }
