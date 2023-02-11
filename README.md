@@ -18,9 +18,17 @@ List all employees earning under a certain amount: The system provides a functio
 
 Sort by Gender: The system provides a functionality to sort the list of employees by gender.
 
-## Dependencies
+##Getting Started
+
+### Dependencies
 Kotlin Logging: The system uses Kotlin Logging for logging purposes.
+
+### Installing
+Clone repo from Intellij
+Build within Intellij
+
+###
 
 
 ## Project Author
-Ayo Oguntuyi
+Ayo Oguntuyi @Ayo67
