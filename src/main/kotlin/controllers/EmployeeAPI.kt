@@ -5,7 +5,6 @@ Author     : Ayo Oguntuyi
 
 package controllers
 
-import ie.setu.employees
 import models.Employee
 
 

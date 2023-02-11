@@ -5,6 +5,11 @@ Author     : Ayo Oguntuyi
 
 package models
 
+import ie.setu.ConsoleColours
+import ie.setu.ConsoleColours.CYAN
+import ie.setu.ConsoleColours.GREEN
+import ie.setu.ConsoleColours.PURPLE_UNDERLINED
+import ie.setu.ConsoleColours.RESET
 import kotlin.math.round
 
 class Employee(
@@ -35,32 +40,49 @@ class Employee(
     fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + cycleToWorkMonthlyDeduction))
     fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
+
     fun getPayslip() =
-        """
-        ______________________________________________________________________
-         Monthly Payslip:             ${getFullName()}, ID: ${employeeID}                 
-        ______________________________________________________________________    
-              PAYMENT DETAILS (gross pay: ${getGrossMonthlyPay()})                                                                    
-        ______________________________________________________________________
-                   Salary: ${getMonthlySalary()}
-                   Bonus:  ${roundTwoDecimals(annualBonus / 12)}            
-        ______________________________________________________________________
-              DEDUCTION DETAILS (total Deductions: ${getTotalMonthlyDeductions()})      
-        ______________________________________________________________________
-                   PAYE: ${getMonthlyPAYE()}                
-                   PRSI: ${getMonthlyPRSI()}  
-                   Cycle To Work: ${cycleToWorkMonthlyDeduction}         
-        ______________________________________________________________________
-             NET PAY: ${getNetMonthlyPay()} 
-        ______________________________________________________________________"""
+        CYAN + """
++-----------------------------------------------------------------------+
+| $PURPLE_UNDERLINED Monthly Payslip$RESET               |
++-----------------------------------------------------------------------+
+| $PURPLE_UNDERLINED Employee Information$RESET          |
+| $GREEN Name:$RESET ${getFullName()}           |
+| $GREEN ID:$RESET ${employeeID}                |
++-----------------------------------------------------------------------+
+| $PURPLE_UNDERLINED Payment Details$RESET              |
+| $GREEN Gross Pay:$RESET} $${getGrossMonthlyPay()} |
+| $GREEN Salary:$RESET $${getMonthlySalary()}   |
+| $GREEN Bonus:$RESET $${roundTwoDecimals(annualBonus / 12)} |
++-----------------------------------------------------------------------+
+| $PURPLE_UNDERLINED}Deduction Details$RESET            |
+| $GREEN Total Deductions:$RESET $${getTotalMonthlyDeductions()} |
+| $GREEN PAYE:$RESET $${getMonthlyPAYE()}      |
+| $GREEN PRSI:$RESET $${getMonthlyPRSI()}      |
+| $GREEN Cycle To Work:$RESET $${cycleToWorkMonthlyDeduction} |
++-----------------------------------------------------------------------+
+| $PURPLE_UNDERLINED Net Pay:$RESET $${getNetMonthlyPay()} |
++-----------------------------------------------------------------------+
+""" + RESET
+
 
 
 
     override fun toString(): String {
-        return "Employee(firstName='$firstName', surname='$surname', gender=$gender, employeeID=$employeeID, grossSalary=$grossSalary, payePercentage=$payePercentage, prsiPercentage=$prsiPercentage, annualBonus=$annualBonus, cycleToWorkMonthlyDeduction=$cycleToWorkMonthlyDeduction)"
+        return """
+             Employee
+             ______________________________________________________________
+                |   Name: '${getFullName()}'               ID: $employeeID
+                |   Gender: $gender                             
+                |   Gross Salary: $grossSalary
+                |   Paye Percentage: $payePercentage           
+                |   Prsi Percentage: $prsiPercentage
+                |   Annual Bonus: $annualBonus                              
+                |   Cycle To Work Monthly Deduction: $cycleToWorkMonthlyDeduction                     
+             ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  """
     }
-
 }
+
 
 
 
