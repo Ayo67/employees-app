@@ -21,15 +21,18 @@ This project provides a simple employee management system for recording employee
 ##Getting Started
 
 ### Dependencies
+
 *Kotlin Logging: The system uses Kotlin Logging for logging purposes.
 
 ### Installing
-*Clone repo from Intellij
-*Build within Intellij
+
+* Clone repo from Intellij
+* Build within Intellij
 
 ###Executing program
-*Once the program has been successfully developed
-*Within IntelliJ, select Run.
+
+* Once the program has been successfully developed
+* Within IntelliJ, select Run.
 
 
 ## Project Author
